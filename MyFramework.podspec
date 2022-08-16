@@ -15,5 +15,6 @@ Pod::Spec.new do |spec|
   spec.source_files  = "MyFramework"
   spec.exclude_files = "Classes/Exclude"
   spec.swift_version = "4.2" 
+ spec.dependency 'Alamofire'
 
 end

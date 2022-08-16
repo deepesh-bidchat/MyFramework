@@ -5,7 +5,10 @@
 //  Created by Naik Deepesh  on 16/08/22.
 //
 
+
 import Foundation
+import Alamofire
+
 public protocol APIRequest {
     
     associatedtype RequestDataType
@@ -41,10 +44,14 @@ public class APIRequestLoader<T: APIRequest> {
             completionHandler(nil,error)
         }
     }
-    public func hardCodedData() -> String {
-        return "hardCodedString"
+    public func getAlamofireResponse(_ url: String, completion: @escaping (String) -> Void) {
+        AF.request(url).responseString { (response) in
+            //
+            if let json = response.value {
+                completion(json) // serialized json response
+            }
+
+            //
+        }
     }
-   
-
-
 }
